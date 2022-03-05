@@ -34,6 +34,7 @@ class TestApi(unittest.TestCase):
     async def test_response(self):
         response = await self._async_connection.get("http://localhost:7979")
         self.assertEqual(response.status_code, 200)
+        logging.info("Response test")
         self.addAsyncCleanup(self.on_cleanup)
 
     def test_stress(self):
@@ -52,12 +53,12 @@ class TestApi(unittest.TestCase):
         logging.info(f"Time for 100 requests : {full_time_request} ms")
 
         self.assertTrue(full_time_request < 60000)
-        #self.assertTrue(all(r.status_code == 200 for r in responses))
 
 
     def test_original(self):
         model = Detoxify("original")
         results = model.predict(["shut up, you liar", "you look like Marilyn Monroe"])
+        logging.info("Original test")
         assert len(results) == 6
         assert all(cl in results for cl in CLASSES[:6])
         assert results["toxicity"][0] >= 0.7
