@@ -31,3 +31,17 @@ When you are done, properly delete containers if it's necessary :
     
     - Run the following command : docker-compose down
 
+You can also run images, and run test separtly
+
+test :  - cd ./tests
+        - python3 tests.py
+        
+You can build images for the tests and the app
+
+    - cd to the folder api or tests.
+
+    - docker build -t toxic .
+    - docker run -dp 7979:7979 toxic
+
+Same steps for the tests
+
