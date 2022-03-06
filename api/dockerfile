@@ -10,3 +10,5 @@ RUN pip3 install -r requirements.txt
 EXPOSE 7979
 
 CMD ["python3", "app.py"]
+
+# from dockerfile to Dockerfile, issue with jenkins test
